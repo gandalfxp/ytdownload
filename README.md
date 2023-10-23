@@ -14,7 +14,7 @@ After that, it will start to download every video as MP3-File.
 
 The folder and the songs it contains are named after their respective titles on
 YouTube. Sometimes, it occurs that a title on YouTube contains characters that 
-are invalid in file- or directory-names. Therefor you can interactively correct
+are invalid in file- or directory-names. Therefore you can interactively correct
 them at runtime.
 
 ## Dependencies
