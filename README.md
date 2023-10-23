@@ -3,6 +3,10 @@
 Download your favorite songs from YouTube! YTdownload is meant to be
 minimalistic and easy-to-use, so why don't you give it a try?
 
+<p align="center">
+  <img src="https://i.postimg.cc/MGSWTmVq/ytdownload.png"/>
+</p>
+
 ## Usage
 
 The command structure looks like this:  
