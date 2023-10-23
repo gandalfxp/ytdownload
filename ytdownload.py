@@ -1,5 +1,6 @@
 from pytube import Playlist, YouTube
-import os
+from os import mkdir
+from argparse import ArgumentParser
 
 def trim(string: str, max_len: int) -> str:
     '''
@@ -24,7 +25,7 @@ def create_directory(name: str) -> str:
 
     while True:
         try:
-            os.mkdir(f'./{name}')
+            mkdir(f'./{name}')
             break
         except FileExistsError:
             msg = f'A directory called "./{name}" already exists. Try another name: '
@@ -56,6 +57,8 @@ def download(url: str, dir: str) -> None:
             name = input(msg)
     
     song.streams.get_audio_only().download(dir, name)
+    print(f'✅ Downloaded {song.title}')
+
 
 LOGO = '''
        _      _                     _                 _ 
@@ -67,12 +70,14 @@ LOGO = '''
 
 '''
 
+parser = ArgumentParser('ytdownload', description='An easy-to-use downloader for playlists on YouTube.')
+parser.add_argument('link', help='The link to the playlist on YouTube.')
 
 if __name__ == '__main__':
     print(LOGO)
 
-
-    link = 'https://www.youtube.com/watch?v=tsmPCi7'
+    args = parser.parse_args()
+    link = args.link
 
     while True:
         try:
@@ -83,5 +88,9 @@ if __name__ == '__main__':
             msg = f'Cannot access the link to the playlist. Try another link: '
             link = input(msg)
 
+    print(f'\n⏳ Downloading songs listed in {playlist.title}\n')
+    
     for url in playlist.video_urls:
         download(url, directory)
+
+    print('\n👍 All done! ✨\n')
